@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#00796B</color>
+    <color name="colorPrimaryDark">#004C40</color>
+    <color name="colorAccent">#00ACC1</color>
+    <color name="colorBlack">#212121</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#9E9E9E</color>
+
+    <!-- nav_header colors gradient-->
+    <color name="centerColor">#009688</color>
+    <color name="endColor">#00595C</color>
+    <color name="startColor">#4DB6AC</color>
 </resources>

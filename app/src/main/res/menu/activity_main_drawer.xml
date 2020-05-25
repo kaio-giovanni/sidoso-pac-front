@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/group_menu_main"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_professionals"
+            android:icon="@drawable/ic_account_box_black"
+            android:title="@string/professionals" />
+
+        <item
+            android:id="@+id/nav_emergency"
+            android:icon="@drawable/ic_emergency"
+            android:title="@string/emergency"/>
+
+        <item
+            android:id="@+id/nav_market"
+            android:icon="@drawable/ic_store_black"
+            android:title="@string/market"/>
+
+        <item
+            android:id="@+id/nav_company"
+            android:icon="@drawable/ic_work_black"
+            android:title="@string/company" />
+
+    </group>
+
+    <group
+        android:id="@+id/group_menu_settings"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_black"
+            android:title="@string/settings" />
+    </group>
+
+</menu>

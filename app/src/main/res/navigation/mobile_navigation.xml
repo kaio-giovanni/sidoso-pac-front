@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_professionals">
+
+    <fragment
+        android:id="@+id/nav_professionals"
+        android:name="com.sidoso.paciente.ui.professionals.FragmentProfessionals"
+        android:label="@string/professionals"
+        tools:layout="@layout/fragment_professionals"/>
+
+    <fragment
+        android:id="@+id/nav_emergency"
+        android:name="com.sidoso.paciente.ui.emergency.FragmentEmergency"
+        android:label="@string/emergency"
+        tools:layout="@layout/fragment_emergency"/>
+
+    <fragment
+        android:id="@+id/nav_market"
+        android:name="com.sidoso.paciente.ui.market.FragmentMarket"
+        android:label="@string/market"
+        tools:layout="@layout/fragment_market"/>
+
+    <fragment
+        android:id="@+id/nav_company"
+        android:name="com.sidoso.paciente.ui.company.FragmentCompany"
+        android:label="@string/company"
+        tools:layout="@layout/fragment_company"/>
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.sidoso.paciente.ui.settings.FragmentSettings"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings"/>
+
+</navigation>
