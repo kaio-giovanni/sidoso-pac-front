@@ -1,4 +1,4 @@
-# S-idoso: Saúde do idoso
+# S-idoso: Saúde do idoso (Pacientes)
 ![sidoso](app/src/main/res/drawable/sidoso.jpg?raw=true "Title")
 
 ### Descrição do projeto
@@ -34,7 +34,7 @@ Este projeto é divido em três partes:
 ### Redes sociais
 
 * [instagram](www.instagram.com/_sidoso)
-
+Criação de um aplicativo para auxílio do relacionamento dos profissionais de saúde com seus pacientes. Este é o modulo do paciente
 
 
 
