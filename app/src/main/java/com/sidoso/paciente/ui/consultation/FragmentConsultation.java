@@ -1,4 +1,4 @@
-package com.sidoso.paciente.ui.market;
+package com.sidoso.paciente.ui.consultation;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.sidoso.paciente.R;
 
-public class FragmentMarket extends Fragment {
+public class FragmentConsultation extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_market, container, false);
+        View view = inflater.inflate(R.layout.fragment_consultation, container, false);
         return view;
     }
 }

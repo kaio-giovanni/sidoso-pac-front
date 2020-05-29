@@ -7,8 +7,8 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tv_market"
-        android:text="@string/market"
+        android:id="@+id/tv_associateds"
+        android:text="@string/associateds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"

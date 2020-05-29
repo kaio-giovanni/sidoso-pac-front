@@ -12,16 +12,16 @@
         tools:layout="@layout/fragment_professionals"/>
 
     <fragment
-        android:id="@+id/nav_emergency"
-        android:name="com.sidoso.paciente.ui.emergency.FragmentEmergency"
-        android:label="@string/emergency"
-        tools:layout="@layout/fragment_emergency"/>
+        android:id="@+id/nav_consultation"
+        android:name="com.sidoso.paciente.ui.consultation.FragmentConsultation"
+        android:label="@string/consultation"
+        tools:layout="@layout/fragment_consultation"/>
 
     <fragment
-        android:id="@+id/nav_market"
-        android:name="com.sidoso.paciente.ui.market.FragmentMarket"
-        android:label="@string/market"
-        tools:layout="@layout/fragment_market"/>
+        android:id="@+id/nav_associateds"
+        android:name="com.sidoso.paciente.ui.associateds.FragmentAssociateds"
+        android:label="@string/associateds"
+        tools:layout="@layout/fragment_associateds"/>
 
     <fragment
         android:id="@+id/nav_company"
@@ -34,5 +34,11 @@
         android:name="com.sidoso.paciente.ui.settings.FragmentSettings"
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings"/>
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.sidoso.paciente.ui.about.FragmentAbout"
+        android:label="@string/about"
+        tools:layout="@layout/fragment_about"/>
 
 </navigation>

@@ -7,10 +7,10 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tv_emergency"
+        android:id="@+id/tv_about"
+        android:text="@string/about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/emergency"
         android:textAlignment="center"
         android:layout_gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"

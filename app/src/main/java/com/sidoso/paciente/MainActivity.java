@@ -29,10 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_professionals,
-                R.id.nav_emergency,
-                R.id.nav_market,
+                R.id.nav_consultation,
+                R.id.nav_associateds,
                 R.id.nav_company,
-                R.id.nav_settings
+                R.id.nav_settings,
+                R.id.nav_about
         ).setDrawerLayout(drawer).build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

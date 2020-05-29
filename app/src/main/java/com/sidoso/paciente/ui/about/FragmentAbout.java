@@ -1,4 +1,4 @@
-package com.sidoso.paciente.ui.emergency;
+package com.sidoso.paciente.ui.about;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.sidoso.paciente.R;
 
-public class FragmentEmergency extends Fragment {
+public class FragmentAbout extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_emergency, container, false);
+        View view = inflater.inflate(R.layout.fragment_about, container, false);
         return view;
     }
 }

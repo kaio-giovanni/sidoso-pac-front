@@ -13,9 +13,13 @@
     <string name="register">Cadastrar</string>
     <string name="link_register"> Não tem uma conta? Crie uma</string>
     <string name="professionals"> Profissionais</string>
-    <string name="emergency">Emergencia</string>
-    <string name="market">Mercado</string>
     <string name="company">Empresa</string>
+    <string name="associateds">Associados</string>
+    <string name="about">Sobre</string>
+    <string name="entertainment">Entretenimento</string>
+    <string name="pharmacies">Fármacias</string>
+    <string name="consultation">Consultas</string>
+    <string name="others">Outros</string>
     <string name="user_email">paciente@sidoso.com</string>
     <string name="user_name">Kaio giovanni</string>
     <string name="cancel">Cancelar</string>

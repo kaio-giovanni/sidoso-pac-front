@@ -79,7 +79,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             super.onPostExecute(paciente);
             Intent intent;
 
-            if(paciente == null){// Redirect to LoginActivity
+            if(paciente != null){// Redirect to LoginActivity
                 intent = new Intent(getBaseContext(), LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
