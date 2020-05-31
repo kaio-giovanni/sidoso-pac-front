@@ -1,14 +1,20 @@
 package com.sidoso.paciente;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
+import com.sidoso.paciente.model.Paciente;
 import com.sidoso.paciente.utils.MaskEditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    private ProgressBar progressBar;
 
     private EditText et_name;
     private EditText et_birth;
@@ -25,6 +31,9 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBarRegister);
+        progressBar.setVisibility(8); // 0 -> visible, 4 -> invisible, 8 -> gone
 
         et_name = (EditText) findViewById(R.id.et_reg_name);
 
@@ -43,5 +52,30 @@ public class RegisterActivity extends AppCompatActivity {
         et_email = (EditText) findViewById(R.id.et_reg_email);
         et_password = (EditText) findViewById(R.id.et_reg_password);
         et_confirm_pass = (EditText) findViewById(R.id.et_reg_confirm_pass);
+    }
+
+    private class LoadTasks extends AsyncTask<String, Void, Paciente> {
+
+        public LoadTasks(){}
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setVisibility(0);
+
+        }
+
+        @Override
+        protected Paciente doInBackground(String... strings) {
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Paciente paciente) {
+            super.onPostExecute(paciente);
+
+            progressBar.setVisibility(4);
+        }
     }
 }

@@ -1,13 +1,14 @@
 package com.sidoso.paciente.database;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DataBase extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "sidoso_paciente.sqlite";
     private static final int DATABASE_VERSION = 1;
-    private static final String SQL_CREATE_TABLE = "CREATE TABLE "   + PacienteReadContract.PacienteEntry.TABLE_NAME +
+    private static final String SQL_CREATE_TABLE = "CREATE TABLE IF NOT EXISTS" + PacienteReadContract.PacienteEntry.TABLE_NAME +
             PacienteReadContract.PacienteEntry.COLUMN_ID        + " INTEGER PRIMARY KEY AUTOINCREMENT, "      +
             PacienteReadContract.PacienteEntry.COLUMN_TOKEN_API + " VARCHAR(120) NOT NULL, "                  +
             PacienteReadContract.PacienteEntry.TABLE_NAME       + " VARCHAR(40) NOT NULL, "                   +
@@ -20,8 +21,13 @@ public class DataBase extends SQLiteOpenHelper {
     private static final String SQL_DROP_TABLE = "DROP TABLE IF EXISTS" + PacienteReadContract.PacienteEntry.TABLE_NAME;
     protected SQLiteDatabase database;
 
-    public DataBase(Context context){
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    public DataBase(final Context context){
+        super(new ContextWrapper(context){
+            @Override
+            public SQLiteDatabase openOrCreateDatabase(String name, int mode, SQLiteDatabase.CursorFactory factory) {
+                return super.openOrCreateDatabase(DATABASE_NAME, context.MODE_PRIVATE, factory);
+            }
+        }, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override

@@ -20,23 +20,65 @@ public class PacienteController {
         return pacienteController;
     }
 
-    public void insert(Paciente paciente) throws Exception{
-        pacienteDAO.insert(paciente);
+    public boolean insert(Paciente paciente) {
+        boolean success = false;
+        try{
+            pacienteDAO.insert(paciente);
+            success = true;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            success = false;
+        }finally{
+            return success;
+        }
     }
 
-    public void update(Paciente paciente) throws Exception{
-        pacienteDAO.update(paciente);
+    public boolean update(Paciente paciente) {
+        boolean success = false;
+        try{
+            pacienteDAO.update(paciente);
+            success = true;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            success = false;
+        }finally{
+            return success;
+        }
     }
 
-    public Paciente findById(Integer id) throws Exception{
-        return pacienteDAO.findById(id);
+    public Paciente findById(Integer id) {
+        Paciente paciente = null;
+        try{
+            paciente = pacienteDAO.findById(id);
+        }catch(Exception ex){
+            ex.printStackTrace();
+            paciente = null;
+        }finally{
+            return paciente;
+        }
     }
 
-    public List<Paciente> findAll() throws Exception{
-        return pacienteDAO.findAll();
+    public List<Paciente> findAll() {
+        List<Paciente> pacientes = null;
+        try{
+            pacientes = pacienteDAO.findAll();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            pacientes = null;
+        }finally{
+            return pacientes;
+        }
     }
 
-    public Paciente findByLogin(String email, String password) throws Exception{
-        return pacienteDAO.findByLogin(email, password);
+    public Paciente findByLogin(String email, String password) {
+        Paciente paciente = null;
+        try{
+            paciente = pacienteDAO.findByLogin(email, password);
+        }catch(Exception ex){
+            ex.printStackTrace();
+            paciente = null;
+        }finally{
+            return paciente;
+        }
     }
 }

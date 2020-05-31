@@ -24,13 +24,13 @@
         <item name="android:textColorHint">@color/colorGray</item>
         <item name="android:textSize">@dimen/text_size</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="colorControlNormal">@color/colorPrimaryDark</item>
-        <item name="colorControlActivated">@color/colorPrimary</item>
-        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="android:colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="android:colorControlActivated">@color/colorPrimary</item>
+        <item name="android:colorControlHighlight">@color/colorAccent</item>
     </style>
 
     <style name="AppTheme.ButtonAppearance">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@drawable/button_bg</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">@dimen/text_size</item>
         <item name="android:fontFamily">sans-serif</item>

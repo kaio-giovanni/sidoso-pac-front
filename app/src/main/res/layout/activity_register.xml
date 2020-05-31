@@ -12,6 +12,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <ProgressBar
+            android:id="@+id/progressBarRegister"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_bottom_progress"
+            android:indeterminate="true" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

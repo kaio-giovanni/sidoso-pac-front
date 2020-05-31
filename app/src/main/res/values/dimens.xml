@@ -5,6 +5,8 @@
     <dimen name="margin_img">20dp</dimen>
     <dimen name="margin_title">20dp</dimen>
     <dimen name="text_size">18sp</dimen>
+    <dimen name="button_radius"> 20dp</dimen>
+    <dimen name="margin_bottom_progress"> 15dp</dimen>
     <dimen name="text_logo_splash">26sp</dimen>
 
     <dimen name="activity_horizontal_margin">16dp</dimen>

@@ -103,4 +103,3 @@ public class PacienteDAO extends DataBase {
         return paciente;
     }
 }
-

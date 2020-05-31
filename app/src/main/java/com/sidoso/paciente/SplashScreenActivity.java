@@ -60,17 +60,15 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         @Override
         protected Paciente doInBackground(String... params) {
-
-            Paciente p = null;
-            try {
+            Paciente paciente = null;
+            try{
                 Thread.sleep(SPLASH_SCREEN_TIME);
-                String email = params[0];
-                String password = params[1];
-                p = pacienteController.findByLogin(email, password);
-            } catch (Exception e){
-                e.printStackTrace();
-            } finally {
-                return p;
+                paciente = pacienteController.findByLogin(params[0], params[1]);
+            }catch (InterruptedException ie){
+                ie.printStackTrace();
+                return null;
+            }finally{
+                return paciente;
             }
         }
 
@@ -79,7 +77,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             super.onPostExecute(paciente);
             Intent intent;
 
-            if(paciente != null){// Redirect to LoginActivity
+            if(paciente == null){// Redirect to LoginActivity
                 intent = new Intent(getBaseContext(), LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/margin_bottom_progress"
         android:background="@color/colorPrimaryDark"
         android:indeterminate="true"
         app:layout_constraintBottom_toTopOf="@+id/img_spalsh"
