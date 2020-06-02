@@ -29,11 +29,11 @@ Este projeto é divido em três partes:
 ### Autor e licença
 
 * _Autor:_ Kaio Giovanni B. de Lucena
-* _Licença:_ Este aplicativo está sob a licença [Apache License 2.0](LICENSE)
+* _Licença:_ Este aplicativo está sob a licença [Apache License 2.0](https://apache.org/licenses/LICENSE-2.0)
 
 ### Redes sociais
 
-* [instagram](www.instagram.com/_sidoso)
+* [instagram](https://instagram.com/_sidoso)
 
 
 
