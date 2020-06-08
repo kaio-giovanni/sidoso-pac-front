@@ -1,6 +1,6 @@
 # S-idoso: Saúde do idoso (Pacientes)
-<p align="center>
-          <img alt="S-idoso pacientes" width="200” height="350" src="app/src/main/res/drawable/sidoso.jpg" />
+<p align="center">
+          <img src="app/src/main/res/drawable/sidoso.jpg" >
 </p> 
 
 ### Descrição do projeto
