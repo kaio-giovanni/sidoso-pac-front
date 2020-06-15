@@ -20,25 +20,19 @@ O projeto terá seu front-end disponibilizado para a plataforma Android, tanto a
 - [ ] Seção de associados(Ex: Farmácias, locais de entretenimento, outros profissionais)
 - [ ] Seção de empresa (contatos da empresa, solicitações emergenciais, etc)
 
-### Informações adicionais
+## Licença
+* Este aplicativo está sob a licença [Apache License 2.0](https://apache.org/licenses/LICENSE-2.0)
 
-Este projeto é divido em três partes:
-1. front-end do modulo de pacientes (S-idoso pacientes)
-2. front-end do modulo de profissionais (S-idoso profissionais)
-3. back-end da aplicação (S-idoso API)
-
-
-### Autor e licença
-
-* _Autor:_ Kaio Giovanni B. de Lucena
-* _Licença:_ Este aplicativo está sob a licença [Apache License 2.0](https://apache.org/licenses/LICENSE-2.0)
-
-### Redes sociais
+## Redes sociais
 
 * [instagram](https://instagram.com/_sidoso)
 
 
+## Autor
 
+| ![user](https://avatars1.githubusercontent.com/u/64810260?v=4&s=150) |
+| ----------------------------- |
+| <p align="center"> <a href="https://github.com/kaio-giovanni"> @kaio-giovanni </a> </p>|
 
 
 
