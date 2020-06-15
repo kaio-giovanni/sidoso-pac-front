@@ -3,7 +3,7 @@
           <img src="app/src/main/res/drawable/sidoso.jpg" >
 </p> 
 
-### Descrição do projeto
+## Descrição do projeto
 
 A idéia do aplicativo nasceu de um projeto de uma turma de Fisioterapia da Facisa(Campina grande-PB),
 que teve a missão de auxiliar de alguma forma na gerencia do relacionamento entre os profissionais
@@ -11,7 +11,7 @@ de saúde e seus pacientes (neste caso idosos).
 O projeto terá seu front-end disponibilizado para a plataforma Android, tanto a parte de pacientes quanto a de profissionais.
 
 
-### Funcionalidades do Aplicativo
+## Funcionalidades do Aplicativo
 
 - [ ] Cadastro de novos usuarios (pacientes)
 - [ ] Login de usuários
