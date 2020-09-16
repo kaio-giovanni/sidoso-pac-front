@@ -9,11 +9,14 @@
 
     <ProgressBar
         android:id="@+id/progressBarLogin"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/height_progressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_marginBottom="@dimen/margin_bottom_progress"
-        android:indeterminate="true" />
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/custom_progressbar"
+        android:visibility="invisible"
+        />
 
     <TextView
         android:layout_width="match_parent"

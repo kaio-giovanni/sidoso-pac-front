@@ -10,12 +10,7 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sidoso.paciente.controller.PacienteController;
 import com.sidoso.paciente.model.Paciente;
-
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -23,8 +18,6 @@ public class SplashScreenActivity extends AppCompatActivity {
     private ImageView imgSplash;
     private Animation anim;
     private LoadTasks loadTasks;
-
-    private PacienteController pacienteController;
 
     private static final int SPLASH_SCREEN_TIME = 5000;
 
@@ -38,8 +31,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         imgSplash = (ImageView) findViewById(R.id.img_splash);
         anim = AnimationUtils.loadAnimation(this, R.anim.anim_splash_screen);
         imgSplash.setAnimation(anim);
-
-        pacienteController = PacienteController.getPacienteController(this);
 
         loadTasks = new LoadTasks();
         loadTasks.execute("", "");
@@ -63,7 +54,6 @@ public class SplashScreenActivity extends AppCompatActivity {
             Paciente paciente = null;
             try{
                 Thread.sleep(SPLASH_SCREEN_TIME);
-                paciente = pacienteController.findByLogin(params[0], params[1]);
             }catch (InterruptedException ie){
                 ie.printStackTrace();
                 return null;

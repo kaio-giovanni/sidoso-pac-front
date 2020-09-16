@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    tools:visibility="visible">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,168 +15,197 @@
 
         <ProgressBar
             android:id="@+id/progressBarRegister"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_progressbar"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_bottom_progress"
-            android:indeterminate="true" />
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/custom_progressbar"
+            android:visibility="invisible"
+            />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_title"
-            android:text="@string/register"
-            android:textSize="@dimen/text_logo_splash"
-            android:textStyle="bold"
-            android:textColor="@color/colorBlack"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"
-            android:fontFamily="serif" />
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="120dp"
-            android:contentDescription="@string/name_desc"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/roundCardView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/margin_img"
-            android:src="@drawable/screen" />
+            android:layout_margin="@dimen/margin_form_item"
+            app:cardCornerRadius="100dp">
+
+            <ImageView
+                android:id="@+id/img_user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/name_desc"
+                android:onClick="loadImageFromGallery"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_user" />
+
+        </androidx.cardview.widget.CardView>
 
         <EditText
             android:id="@+id/et_reg_name"
+            style="@style/AppTheme.EditTextAppearance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_form_item"
-            style="@style/AppTheme.EditTextAppearance"
-            android:inputType="text"
             android:autofillHints="@string/enter_name"
-            android:hint="@string/enter_name" />
+            android:hint="@string/enter_name"
+            android:inputType="text" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <EditText
                 android:id="@+id/et_reg_dt_birth"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_form_item"
-                android:maxLength="10"
-                android:layout_gravity="center_vertical"
                 style="@style/AppTheme.EditTextAppearance"
-                android:inputType="date"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/margin_form_item"
+                android:layout_weight="1"
                 android:autofillHints="@string/dt_birth"
-                android:hint="@string/dt_birth" />
+                android:hint="@string/dt_birth"
+                android:inputType="date"
+                android:maxLength="10" />
 
             <EditText
                 android:id="@+id/et_reg_cpf"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_form_item"
-                android:maxLength="14"
-                android:layout_gravity="center_vertical"
                 style="@style/AppTheme.EditTextAppearance"
-                android:inputType="number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/margin_form_item"
+                android:layout_weight="1"
                 android:autofillHints="@string/enter_cpf"
-                android:hint="@string/enter_cpf" />
+                android:hint="@string/enter_cpf"
+                android:inputType="number"
+                android:maxLength="14" />
 
         </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/rd_genre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_form_item"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RadioButton
+                android:id="@+id/rd_masculino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:onClick="onRadioButtonGenreClicked"
+                android:text="@string/genre_m" />
+
+            <RadioButton
+                android:id="@+id/rd_feminino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonGenreClicked"
+                android:text="@string/genre_f" />
+
+        </RadioGroup>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <EditText
                 android:id="@+id/et_reg_phone1"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_form_item"
-                android:maxLength="15"
-                android:layout_gravity="center_vertical"
                 style="@style/AppTheme.EditTextAppearance"
-                android:inputType="phone"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/margin_form_item"
+                android:layout_weight="1"
                 android:autofillHints="@string/enter_phone1"
-                android:hint="@string/enter_phone1" />
+                android:hint="@string/enter_phone1"
+                android:inputType="phone"
+                android:maxLength="15" />
 
             <EditText
                 android:id="@+id/et_reg_phone2"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_form_item"
-                android:maxLength="15"
-                android:layout_gravity="center_vertical"
                 style="@style/AppTheme.EditTextAppearance"
-                android:inputType="phone"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/margin_form_item"
+                android:layout_weight="1"
                 android:autofillHints="@string/enter_phone2"
-                android:hint="@string/enter_phone2" />
+                android:hint="@string/enter_phone2"
+                android:inputType="phone"
+                android:maxLength="15" />
 
         </LinearLayout>
 
         <EditText
             android:id="@+id/et_reg_email"
+            style="@style/AppTheme.EditTextAppearance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_form_item"
             android:layout_gravity="center_vertical"
-            style="@style/AppTheme.EditTextAppearance"
-            android:inputType="textEmailAddress"
+            android:layout_margin="@dimen/margin_form_item"
             android:autofillHints="@string/enter_email"
-            android:hint="@string/enter_email" />
+            android:hint="@string/enter_email"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/et_reg_password"
+            style="@style/AppTheme.EditTextAppearance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_form_item"
             android:layout_gravity="center_vertical"
-            style="@style/AppTheme.EditTextAppearance"
-            android:inputType="textPassword"
+            android:layout_margin="@dimen/margin_form_item"
             android:autofillHints="@string/enter_password"
-            android:hint="@string/enter_password" />
+            android:hint="@string/enter_password"
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/et_reg_confirm_pass"
+            style="@style/AppTheme.EditTextAppearance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_form_item"
             android:layout_gravity="center_vertical"
-            style="@style/AppTheme.EditTextAppearance"
-            android:inputType="textPassword"
+            android:layout_margin="@dimen/margin_form_item"
             android:autofillHints="@string/confirm_password"
-            android:hint="@string/confirm_password" />
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <Button
                 android:id="@+id/btn_reg_register"
+                style="@style/AppTheme.ButtonAppearance"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                style="@style/AppTheme.ButtonAppearance"
                 android:layout_margin="@dimen/margin_form_item"
+                android:layout_weight="1"
                 android:padding="@dimen/padding_button"
                 android:text="@string/register" />
 
             <Button
                 android:id="@+id/btn_reg_cancel"
+                style="@style/AppTheme.ButtonAppearance"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                style="@style/AppTheme.ButtonAppearance"
                 android:layout_margin="@dimen/margin_form_item"
+                android:layout_weight="1"
                 android:padding="@dimen/padding_button"
                 android:text="@string/cancel" />
 

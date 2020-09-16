@@ -1,17 +1,19 @@
 <resources>
-    <string name="app_name">S-idoso Paciente</string>
-    <string name="name_desc">S-idoso: Saúde do idoso</string>
+    <string name="app_name">S-idoso: Saúde do idoso</string>
+    <string name="name_desc">S-idoso Paciente</string>
     <string name="enter_email">Digite seu email</string>
     <string name="enter_password">Digite sua senha</string>
     <string name="confirm_password">Confirme sua senha</string>
     <string name="enter_name">Digite seu nome</string>
     <string name="dt_birth"> Data de nascimento</string>
     <string name="enter_cpf"> Digite seu CPF</string>
+    <string name="genre_m">Masculino</string>
+    <string name="genre_f">Feminino</string>
     <string name="enter_phone1"> Telefone</string>
     <string name="enter_phone2"> Telefone II (Opcional)</string>
     <string name="login"> Login</string>
     <string name="register">Cadastrar</string>
-    <string name="link_register"> Não tem uma conta? Crie uma</string>
+    <string name="link_register"> <u> Não tem uma conta? Crie uma </u></string>
     <string name="professionals"> Profissionais</string>
     <string name="company">Empresa</string>
     <string name="associateds">Associados</string>

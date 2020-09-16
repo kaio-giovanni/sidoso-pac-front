@@ -13,17 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.sidoso.paciente.model.Paciente;
 
-import io.github.cdimascio.dotenv.Dotenv;
-
 public class LoginActivity extends AppCompatActivity {
 
-    Dotenv dotenv = Dotenv.configure()
-            .directory("/assets")
-            .ignoreIfMalformed()
-            .ignoreIfMissing()
-            .load();
-
-    private final String LOGIN_API = dotenv.get("API_LOGIN");
+    private final String LOGIN_API = "";
     private EditText et_email;
     private EditText et_password;
     private TextView tv_link_reg;
@@ -36,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBarLogin);
-        progressBar.setVisibility(8); // 0 -> visible, 4 -> invisible, 8 -> gone
 
         et_email = (EditText) findViewById(R.id.et_email_login);
         et_password = (EditText) findViewById(R.id.et_password_login);
@@ -61,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(), RegisterActivity.class));
+                finish();
             }
         });
     }
@@ -77,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressBar.setVisibility(0);
+            progressBar.setVisibility(View.VISIBLE);
 
             et_email.setActivated(false);
             et_password.setActivated(false);
@@ -98,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
             et_password.setActivated(true);
             btn_login.setActivated(true);
 
-            progressBar.setVisibility(4);
+            progressBar.setVisibility(View.INVISIBLE);
 
             Intent intent;
 
