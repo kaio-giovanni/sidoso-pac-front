@@ -1,8 +1,10 @@
 package com.sidoso.paciente;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -10,16 +12,16 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sidoso.paciente.model.Paciente;
+import static com.sidoso.paciente.config.Constants.SPLASH_SCREEN_TIME;
+import static com.sidoso.paciente.config.Constants.FILE_PREFERENCES;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
     private ImageView imgSplash;
     private Animation anim;
+    private SharedPreferences mUserSaved;
     private LoadTasks loadTasks;
-
-    private static final int SPLASH_SCREEN_TIME = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +34,15 @@ public class SplashScreenActivity extends AppCompatActivity {
         anim = AnimationUtils.loadAnimation(this, R.anim.anim_splash_screen);
         imgSplash.setAnimation(anim);
 
+        mUserSaved = getSharedPreferences(FILE_PREFERENCES, MODE_PRIVATE);
+
         loadTasks = new LoadTasks();
-        loadTasks.execute("", "");
+        loadTasks.execute("");
 
     }
 
     // verifica se o usuario esta logado
-    private class LoadTasks extends AsyncTask<String, Void, Paciente> {
+    private class LoadTasks extends AsyncTask<String, Void, Boolean> {
 
         public LoadTasks(){
 
@@ -50,30 +54,35 @@ public class SplashScreenActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Paciente doInBackground(String... params) {
-            Paciente paciente = null;
+        protected Boolean doInBackground(String... params) {
+            Boolean isLogged = false;
             try{
                 Thread.sleep(SPLASH_SCREEN_TIME);
+
+                if(mUserSaved.contains("tokenApi") && mUserSaved.contains("userId"))
+                    isLogged = true;
+
             }catch (InterruptedException ie){
                 ie.printStackTrace();
-                return null;
-            }finally{
-                return paciente;
+                isLogged = false;
+            }finally {
+                return isLogged;
             }
         }
 
         @Override
-        protected void onPostExecute(Paciente paciente) {
-            super.onPostExecute(paciente);
+        protected void onPostExecute(Boolean isLogged) {
+            super.onPostExecute(isLogged);
             Intent intent;
+            progressBar.setVisibility(View.INVISIBLE);
 
-            if(paciente == null){// Redirect to LoginActivity
-                intent = new Intent(getBaseContext(), LoginActivity.class);
+            if(isLogged){// Redirect to MainActivity
+                intent = new Intent(getBaseContext(), MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
-            }else{// Redirect to MainActivity
-                intent = new Intent(getBaseContext(), MainActivity.class);
+            }else{// Redirect to LoginActivity
+                intent = new Intent(getBaseContext(), LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();

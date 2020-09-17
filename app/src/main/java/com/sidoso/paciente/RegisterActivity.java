@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -109,8 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                     p.setEmail(et_email.getText().toString().toLowerCase());
                     p.setPassword(et_password.getText().toString());
 
-                    LoadTasks loadTasks = new LoadTasks();
-                    loadTasks.execute(p);
+                    savePaciente(p, API_URL.concat("registrar/paciente/"));
                 }
             }
         });
@@ -220,6 +218,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void savePaciente(final Paciente p, String url){
+        isLoading(true);
         VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
@@ -323,27 +322,6 @@ public class RegisterActivity extends AppCompatActivity {
             progressBar.setVisibility(View.INVISIBLE);
             btn_cancel.setEnabled(true);
             btn_register.setEnabled(true);
-        }
-    }
-
-    private class LoadTasks extends AsyncTask<Paciente, Void, Boolean>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            isLoading(true);
-        }
-
-        @Override
-        protected Boolean doInBackground(Paciente... pacientes) {
-            Paciente p = pacientes[0];
-            savePaciente(p, API_URL.concat("registrar/paciente/"));
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(Boolean s) {
-            super.onPostExecute(s);
         }
     }
 
