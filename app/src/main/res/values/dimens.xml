@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_form_item">15dp</dimen>
+    <dimen name="margin_chat_item">9dp</dimen>
+    <dimen name="size_cardview_chat">60dp</dimen>
     <dimen name="padding_button">10dp</dimen>
     <dimen name="margin_img">20dp</dimen>
     <dimen name="margin_title">20dp</dimen>

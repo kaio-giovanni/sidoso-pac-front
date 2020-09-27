@@ -1,4 +1,4 @@
-package com.sidoso.paciente.httpRequest;
+package com.sidoso.paciente.http;
 
 import android.content.Context;
 import android.graphics.Bitmap;

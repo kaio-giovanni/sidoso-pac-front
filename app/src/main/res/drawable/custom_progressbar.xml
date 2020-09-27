@@ -3,8 +3,8 @@
     <item
         android:id="@android:id/background">
         <shape>
-            <corners android:radius="2dp"/>
-            <solid android:color="@color/colorPrimaryDark"/>
+            <!-- <corners android:radius="2dp"/> -->
+            <solid android:color="@color/colorPrimary"/>
         </shape>
     </item>
     <item
@@ -12,7 +12,7 @@
         <clip android:clipOrientation="horizontal" android:gravity="left">
             <shape>
                 <corners android:radius="2dp"/>
-                <solid android:color="@color/colorPrimary"/>
+                <solid android:color="@color/centerColor"/>
             </shape>
         </clip>
     </item>

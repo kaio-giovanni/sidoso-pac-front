@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
@@ -20,7 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.sidoso.paciente.httpRequest.VolleySingleton;
+import com.sidoso.paciente.http.VolleySingleton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                 }else if(password.length() < 1){
                     et_password.setError("Senha inválida");
                 }else{
-                    Login(API_URL+"login/paciente/", email, password);
+                    Login(API_URL.concat("login/paciente/"), email, password);
                 }
             }
         });
@@ -109,6 +110,8 @@ public class LoginActivity extends AppCompatActivity {
                     prefsEditor.putString("userPhoneMain", response.getString("phone_main"));
                     prefsEditor.putString("userPhoneSeconday", response.getString("phone_secondary"));
                     prefsEditor.putString("userEmail", response.getString("email"));
+                    prefsEditor.putString("userPassword", password);
+
 
                     prefsEditor.commit();
 
@@ -127,13 +130,13 @@ public class LoginActivity extends AppCompatActivity {
                 isLoading(false);
                 NetworkResponse networkResponse = error.networkResponse;
                 if(networkResponse == null){
-                    Log.e("Login Error",error.getClass().toString());
+                    Log.e("LoginError",error.getClass().toString());
                 }else{
                     String result = new String(networkResponse.data);
                     try {
                         JSONObject response = new JSONObject(result);
 
-                        Log.e("Login Error Message", response.toString());
+                        Log.e("LoginErrorMessage", response.toString());
                         Toast.makeText(LoginActivity.this, response.getString("error"), Toast.LENGTH_SHORT).show();
 
                     } catch (JSONException e) {
@@ -156,6 +159,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         };
+
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
     }

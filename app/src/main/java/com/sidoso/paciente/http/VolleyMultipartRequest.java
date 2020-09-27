@@ -1,4 +1,4 @@
-package com.sidoso.paciente.httpRequest;
+package com.sidoso.paciente.http;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;

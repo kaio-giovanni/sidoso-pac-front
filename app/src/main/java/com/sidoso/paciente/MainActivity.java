@@ -12,8 +12,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.material.navigation.NavigationView;
 
 import static com.sidoso.paciente.config.Constants.FILE_PREFERENCES;
@@ -56,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         mUserSaved = getSharedPreferences(FILE_PREFERENCES, MODE_PRIVATE);
 
-        if (mUserSaved.contains("userId") && mUserSaved.contains("tokenApi")){
+        if (mUserSaved.contains("userName") && mUserSaved.contains("userEmail")){
             // usuario logado
             String nome = mUserSaved.getString("userName", "User invalid!!!");
             String email = mUserSaved.getString("userEmail", "Email invalid!!!");

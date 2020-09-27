@@ -25,8 +25,8 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-import com.sidoso.paciente.httpRequest.VolleyMultipartRequest;
-import com.sidoso.paciente.httpRequest.VolleySingleton;
+import com.sidoso.paciente.http.VolleyMultipartRequest;
+import com.sidoso.paciente.http.VolleySingleton;
 import com.sidoso.paciente.model.Paciente;
 import com.sidoso.paciente.utils.Helper;
 import com.sidoso.paciente.utils.MaskEditText;
@@ -98,7 +98,6 @@ public class RegisterActivity extends AppCompatActivity {
                 if(checkFields()){
                     Paciente p = new Paciente();
 
-                    p.setImage(((BitmapDrawable)imgView_user.getDrawable()).getBitmap());
                     p.setName(et_name.getText().toString());
                     p.setDt_birth(et_birth.getText().toString());
                     p.setCpf(et_cpf.getText().toString());
@@ -255,7 +254,7 @@ public class RegisterActivity extends AppCompatActivity {
                     try {
                         JSONObject response = new JSONObject(result);
 
-                        Log.e("Error Message", response.toString());
+                        Log.e("ErrorRegisterMessage", response.toString());
                         errorMessage = response.getString("error");
 
                         //if (networkResponse.statusCode == 404) {}

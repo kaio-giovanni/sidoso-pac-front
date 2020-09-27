@@ -1,14 +1,11 @@
 package com.sidoso.paciente.model;
 
-import android.graphics.Bitmap;
-
-import java.util.Date;
 
 public class Paciente {
 
     private int id;
     private String token_api;
-    private Bitmap photo;
+    private String photoUrl;
     private String name;
     private String dt_birth;
     private String cpf;
@@ -18,9 +15,9 @@ public class Paciente {
     private String email;
     private String password;
 
-    public Paciente(int id, Bitmap photo, String name, String genre, String email, String password, String cpf, String dt_birth, String phone1) {
+    public Paciente(int id, String photo, String name, String genre, String email, String password, String cpf, String dt_birth, String phone1) {
         this.id = id;
-        this.photo = photo;
+        this.photoUrl = photo;
         this.name = name;
         this.genre = genre;
         this.email = email;
@@ -36,12 +33,12 @@ public class Paciente {
         return id;
     }
 
-    public Bitmap getImage(){
-        return this.photo;
+    public String getImage(){
+        return this.photoUrl;
     }
 
-    public void setImage(Bitmap img){
-        this.photo = img;
+    public void setImage(String img){
+        this.photoUrl = img;
     }
 
     public void setToken_api(String token) {
@@ -118,7 +115,7 @@ public class Paciente {
 
     @Override
     public String toString(){
-        String str = "Foto: "+ this.photo.toString() + " \n";
+        String str = "Foto: "+ this.photoUrl + " \n";
         str += "Nome: " + this.name + "\n ";
         str += "Data de nascimento: " + this.dt_birth + " \n";
         str += "CPF: " + this.cpf + " \n";
