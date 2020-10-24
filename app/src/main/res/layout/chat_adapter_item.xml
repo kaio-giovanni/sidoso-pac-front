@@ -7,8 +7,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/round_card_professional"
-        android:layout_width="@dimen/size_cardview_chat"
-        android:layout_height="@dimen/size_cardview_chat"
+        android:layout_width="@dimen/cardview_recycler_item"
+        android:layout_height="@dimen/cardview_recycler_item"
         android:layout_gravity="top"
         android:layout_margin="@dimen/margin_chat_item"
         app:cardCornerRadius="30dp">

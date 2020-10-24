@@ -6,6 +6,7 @@
     <color name="colorBlack">#212121</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray">#9E9E9E</color>
+    <color name="whiteSmoke">#F5F5F5</color>
 
     <!-- nav_header colors gradient-->
     <color name="centerColor">#009688</color>

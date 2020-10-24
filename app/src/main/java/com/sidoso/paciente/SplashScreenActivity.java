@@ -39,26 +39,33 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     }
 
-    private class SplashAnimTask extends AsyncTask<Void, Void, Void> {
+    private class SplashAnimTask extends AsyncTask<Void, Void, Boolean> {
 
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected Boolean doInBackground(Void... voids) {
+            boolean result = false;
             try {
                 Thread.currentThread();
                 Thread.sleep(SPLASH_SCREEN_TIME);
+
+                if (mUserSaved.contains("userEmail") && mUserSaved.contains("userPassword")) {
+                    result = true;
+                }else {
+                    result = false;
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            return null;
+            return result;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
 
             Intent intent;
 
-            if (mUserSaved.contains("userEmail") && mUserSaved.contains("userPassword")) {
+            if(result){
                 intent = new Intent(getBaseContext(), MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_professionals,
                 R.id.nav_consultation,
                 R.id.nav_associateds,
-                R.id.nav_company,
+                //R.id.nav_company,
                 R.id.nav_settings,
                 R.id.nav_about
         ).setDrawerLayout(drawer).build();

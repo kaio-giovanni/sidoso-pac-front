@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -32,6 +33,11 @@ import com.sidoso.paciente.adapter.ChatAdapter;
 import com.sidoso.paciente.http.VolleySingleton;
 import com.sidoso.paciente.model.Profissao;
 import com.sidoso.paciente.model.Profissional;
+import com.sidoso.paciente.utils.RecyclerItemClickListener;
+
+import io.socket.client.IO;
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,7 +58,11 @@ public class FragmentProfessionals extends Fragment {
     private RecyclerView recyclerChat;
     private ChatAdapter chatAdapter;
     private SharedPreferences mUserSaved;
+
     private static List<Profissional> profissionais = new ArrayList<>();
+    private static boolean requestStarted = false;
+
+    private Socket mSocket;
 
     @Nullable
     @Override
@@ -60,6 +70,7 @@ public class FragmentProfessionals extends Fragment {
         View view = inflater.inflate(R.layout.fragment_professionals, container, false);
 
         progressBar = (ProgressBar) view.findViewById(R.id.progress_bar_professionals);
+        progressBar.setVisibility(requestStarted == true ? View.VISIBLE : View.GONE);
 
         recyclerChat = (RecyclerView) view.findViewById(R.id.list_conversation);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -70,12 +81,33 @@ public class FragmentProfessionals extends Fragment {
         mUserSaved = getContext().getSharedPreferences(FILE_PREFERENCES, MODE_PRIVATE);
 
         //get data from api
-        if (profissionais.isEmpty()){
+        if (profissionais.isEmpty() && !requestStarted){
             getProfissionais(mUserSaved.getInt("userId", 0), mUserSaved.getString("tokenApi", ""));
         }
 
         chatAdapter = new ChatAdapter(profissionais);
         recyclerChat.setAdapter(chatAdapter);
+
+        recyclerChat.addOnItemTouchListener(new RecyclerItemClickListener(
+                getContext(),
+                recyclerChat,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    }
+                }
+        ));
 
         return view;
     }
@@ -111,8 +143,7 @@ public class FragmentProfessionals extends Fragment {
                         e.printStackTrace();
                     }
                 }
-                chatAdapter = new ChatAdapter(profissionais);
-                recyclerChat.setAdapter(chatAdapter);
+                chatAdapter.notifyDataSetChanged();
 
             }
         }, new Response.ErrorListener() {
@@ -163,6 +194,7 @@ public class FragmentProfessionals extends Fragment {
     private void refreshTokenApi(String url){
 
         Log.i("RefreshingTokenApi", "Update Token API");
+        isLoading(true);
 
         String email = mUserSaved.getString("userEmail", "");
         String password = mUserSaved.getString("userPassword", "");
@@ -180,13 +212,15 @@ public class FragmentProfessionals extends Fragment {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
+                isLoading(false);
                 SharedPreferences.Editor prefsEditor = mUserSaved.edit();
                 try{
                     JSONObject headers = response.getJSONObject("headers");
                     prefsEditor.putString("tokenApi", headers.getString("Authorization"));
 
                     prefsEditor.commit();
+
+                    getProfissionais(mUserSaved.getInt("userId", 0), headers.getString("Authorization"));
                 }catch (JSONException e){
                     e.printStackTrace();
                 }
@@ -194,7 +228,7 @@ public class FragmentProfessionals extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                isLoading(false);
                 NetworkResponse networkResponse = error.networkResponse;
                 if(networkResponse == null){
                     Log.e("LoginError",error.getClass().toString());
@@ -236,10 +270,30 @@ public class FragmentProfessionals extends Fragment {
     }
 
     private void isLoading(Boolean y){
+        FragmentProfessionals.requestStarted = y;
         if(y){
             progressBar.setVisibility(View.VISIBLE);
         }else{
             progressBar.setVisibility(View.GONE);
         }
+    }
+
+    private connectSocket(){
+        try {
+            
+            mSocket = IO.socket(API_URL); 
+            Log.d("success", mSocket.id());
+
+        } catch (e: Exception) {
+            e.printStackTrace();
+            Log.d("fail", "Failed to connect");
+        }
+
+        mSocket.connect();
+        //Register all the listener and callbacks here.
+        mSocket.on(Socket.EVENT_CONNECT, onConnect);
+        //mSocket.on("newUserToChatRoom", onNewUser);
+        //mSocket.on("updateChat", onUpdateChat);
+        //mSocket.on("userLeftChatRoom", onUserLeft);
     }
 }

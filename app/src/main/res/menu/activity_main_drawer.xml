@@ -18,16 +18,16 @@
             android:icon="@drawable/ic_local_hospital"
             android:title="@string/consultation" />
 
+
         <item
             android:id="@+id/nav_associateds"
             android:title="@string/associateds"
             android:icon="@drawable/ic_store_black" />
-
+        <!--
         <item
             android:id="@+id/nav_company"
             android:icon="@drawable/ic_work_black"
-            android:title="@string/company" />
-
+            android:title="@string/company" /> -->
     </group>
 
     <group

@@ -2,7 +2,7 @@
 <resources>
     <dimen name="margin_form_item">15dp</dimen>
     <dimen name="margin_chat_item">9dp</dimen>
-    <dimen name="size_cardview_chat">60dp</dimen>
+    <dimen name="cardview_recycler_item">60dp</dimen>
     <dimen name="padding_button">10dp</dimen>
     <dimen name="margin_img">20dp</dimen>
     <dimen name="margin_title">20dp</dimen>
@@ -11,9 +11,11 @@
     <dimen name="margin_bottom_progress"> 15dp</dimen>
     <dimen name="text_logo_splash">18sp</dimen>
     <dimen name="height_progressbar">10dp</dimen>
+    <dimen name="img_view_associateds">200dp</dimen>
 
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="nav_header_img_size">90dp</dimen>
 </resources>

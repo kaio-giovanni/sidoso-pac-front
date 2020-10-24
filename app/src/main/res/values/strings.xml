@@ -12,6 +12,7 @@
     <string name="enter_phone1"> Telefone</string>
     <string name="enter_phone2"> Telefone II (Opcional)</string>
     <string name="login"> Login</string>
+    <string name="maps_api_key">AIzaSyAb2eq_Q6DXxcN26EBOAXnLJkrrTclnq24</string>
     <string name="register">Cadastrar</string>
     <string name="link_register"> <u> Não tem uma conta? Crie uma </u></string>
     <string name="professionals"> Profissionais</string>
@@ -27,4 +28,31 @@
     <string name="cancel">Cancelar</string>
     <string name="settings">Configurações</string>
     <string name="logout">Sair</string>
+
+    <string name="desc_about">
+            O aplicativo foi desenvolvido com o intuito de encurtar o relacionamento e acompanhamento dos profissionais de saúde e seus pacientes,
+        promovendo um contato mais informal entre as partes.
+        \n\n
+        <b> Contato com a empresa: </b>
+        \n\n
+            Sinta-se à vontade para nos contatar pelo <i>(000)00000-0000 </i>, ou pelo <i> sidoso.paciente@gmail.com </i>.
+        \n\n
+        <b> Redes sociais: </b>
+        \n\n
+            Siga-nos no instagram: <i>\@_sidoso</i>
+    </string>
+    <string-array name="list_about_fragment">
+        <item>
+            Contato: <small> sidoso.paciente@gmail.com </small>
+        </item>
+        <item>
+            Instagram: <small> \@_sidoso </small>
+        </item>
+    </string-array>
+
+    <string-array name="list_settings_fragment">
+        <item> Testar conexão </item>
+        <item> Sair </item>
+    </string-array>
+
 </resources>
