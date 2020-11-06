@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">S-idoso: Saúde do idoso</string>
-    <string name="name_desc">S-idoso Paciente</string>
+    <string name="app_name">HealthAged</string>
+    <string name="name_desc">HealthAged Paciente</string>
     <string name="enter_email">Digite seu email</string>
     <string name="enter_password">Digite sua senha</string>
     <string name="confirm_password">Confirme sua senha</string>
@@ -28,30 +28,26 @@
     <string name="cancel">Cancelar</string>
     <string name="settings">Configurações</string>
     <string name="logout">Sair</string>
+    <string name="message">Mensagem</string>
 
     <string name="desc_about">
             O aplicativo foi desenvolvido com o intuito de encurtar o relacionamento e acompanhamento dos profissionais de saúde e seus pacientes,
-        promovendo um contato mais informal entre as partes.
-        \n\n
-        <b> Contato com a empresa: </b>
-        \n\n
-            Sinta-se à vontade para nos contatar pelo <i>(000)00000-0000 </i>, ou pelo <i> sidoso.paciente@gmail.com </i>.
-        \n\n
-        <b> Redes sociais: </b>
-        \n\n
+        promovendo um contato mais informal entre as partes.\n\n
+        <b> Contato com a empresa: </b>\n\n
+            Sinta-se à vontade para nos contatar pelo <i>(xxx) x xxxx-xxxx </i>, ou pelo <i> paciente@sidoso.com </i>.\n\n
+        <b> Redes sociais: </b>\n\n
             Siga-nos no instagram: <i>\@_sidoso</i>
     </string>
     <string-array name="list_about_fragment">
-        <item>
-            Contato: <small> sidoso.paciente@gmail.com </small>
+        <item>Contato: <small> sidoso.paciente@gmail.com </small>
         </item>
-        <item>
-            Instagram: <small> \@_sidoso </small>
+        <item>Instagram: <small> instagram.com/\@_sidoso </small>
         </item>
     </string-array>
 
     <string-array name="list_settings_fragment">
-        <item> Testar conexão </item>
+        <item> Apagar todas as mensagens </item>
+        <item> Desativar conta </item>
         <item> Sair </item>
     </string-array>
 

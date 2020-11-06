@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
+import com.sidoso.paciente.model.Paciente;
+import com.sidoso.paciente.websocket.WebSocket;
 
 import static com.sidoso.paciente.config.Constants.FILE_PREFERENCES;
 
@@ -21,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private TextView tvUserName;
     private TextView tvUserEmail;
+    private WebSocket webSocket;
     private SharedPreferences mUserSaved;
+    private Paciente p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +60,28 @@ public class MainActivity extends AppCompatActivity {
 
         if (mUserSaved.contains("userName") && mUserSaved.contains("userEmail")){
             // usuario logado
+            int id =  mUserSaved.getInt("userId", 0);
             String nome = mUserSaved.getString("userName", "User invalid!!!");
             String email = mUserSaved.getString("userEmail", "Email invalid!!!");
 
             tvUserName.setText(nome);
             tvUserEmail.setText(email);
+
+            p = new Paciente();
+            p.setId(id);
+            p.setName(nome);
+            p.setEmail(email);
+
+            webSocket = new WebSocket(p);
         }else{
             finish();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        webSocket.disconnectSocket();
     }
 
     @Override

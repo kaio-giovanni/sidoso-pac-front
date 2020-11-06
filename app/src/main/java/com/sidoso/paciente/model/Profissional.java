@@ -29,6 +29,8 @@ public class Profissional {
         this.especialidades  = new ArrayList<>();
     }
 
+    public Profissional(){}
+
     public int getId() {
         return id;
     }

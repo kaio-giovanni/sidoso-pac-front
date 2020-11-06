@@ -2,32 +2,32 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:weightSum="10"
+    android:orientation="vertical"
+    tools:context="com.sidoso.paciente.AssociatedActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        app:titleTextColor="@color/colorWhite"
-        app:subtitleTextColor="@color/colorWhite"
-        app:popupTheme="@style/AppTheme.PopupOverLay" />
-
-    <TextView
-        android:id="@+id/tv_associated_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_margin="@dimen/margin_form_item"/>
+    <include 
+        android:id="@+id/tollbarAssociated"
+        layout="@layout/toolbar" />
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="9"
         tools:context="com.sidoso.paciente.AssociatedActivity" />
+
+    <TextView
+        android:id="@+id/tv_associated_contact"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textStyle="italic"
+        android:layout_marginLeft="@dimen/margin_form_item"
+        android:layout_marginRight="@dimen/margin_form_item"
+        />
 
 </LinearLayout>

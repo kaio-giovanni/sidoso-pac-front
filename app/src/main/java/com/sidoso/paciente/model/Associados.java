@@ -4,6 +4,7 @@ public class Associados {
     private int id;
     private String photoUrl;
     private String name;
+    private String type;
     private String cnpj;
     private String phone_main;
     private String phone_secondary;
@@ -34,6 +35,14 @@ public class Associados {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getCnpj() {

@@ -19,7 +19,7 @@ public class AssociatedActivity extends AppCompatActivity implements OnMapReadyC
 
     private Toolbar toolbar;
     private GoogleMap mMap;
-    private TextView tv_phone;
+    private TextView tv_contact;
     private LatLng location;
     private Associados associado;
 
@@ -32,19 +32,21 @@ public class AssociatedActivity extends AppCompatActivity implements OnMapReadyC
 
         associado = new Associados();
         associado.setName(intent.getStringExtra("aName"));
+        associado.setType(intent.getStringExtra("aType"));
         associado.setLat(intent.getDoubleExtra("aLat", 0));
         associado.setLng(intent.getDoubleExtra("aLng", 0));
         associado.setEmail(intent.getStringExtra("aEmail"));
         associado.setPhone_main(intent.getStringExtra("aPhoneMain"));
         associado.setPhone_secondary(intent.getStringExtra("aPhoneSecondary"));
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.tollbarAssociated);
         toolbar.setTitle(associado.getName());
-        toolbar.setSubtitle(associado.getEmail());
+        toolbar.setSubtitle(associado.getType());
+        toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
 
-        tv_phone = (TextView) findViewById(R.id.tv_associated_phone);
-        tv_phone.setText("Phone(s): \n" + associado.getPhone_main() + " |\n" + associado.getPhone_secondary());
+        tv_contact = (TextView) findViewById(R.id.tv_associated_contact);
+        tv_contact.setText("Contato: \n\n" + associado.getPhone_main() + " \t\t" + associado.getPhone_secondary() + " \t\t " + associado.getEmail());
 
         location = new LatLng(associado.getLat(), associado.getLng());
 
@@ -62,7 +64,7 @@ public class AssociatedActivity extends AppCompatActivity implements OnMapReadyC
                 .position(this.location)
                 .title(this.associado.getName()));
         CameraUpdateFactory.zoomTo(15);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(this.location));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(this.location, 15));
 
     }
 }

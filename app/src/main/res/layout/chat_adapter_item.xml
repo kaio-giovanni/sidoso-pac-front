@@ -25,14 +25,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/professional_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_chat_item"
+            android:layout_margin="@dimen/margin_form_item"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -40,9 +40,8 @@
             android:id="@+id/professional_job"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_chat_item"
-            android:layout_marginRight="@dimen/margin_chat_item"
-            android:layout_marginBottom="@dimen/margin_chat_item"/>
+            android:layout_marginLeft="@dimen/margin_form_item"
+            android:layout_marginRight="@dimen/margin_form_item"/>
 
     </LinearLayout>
 

@@ -23,12 +23,14 @@ public class AssociatedAdapter extends RecyclerView.Adapter<AssociatedAdapter.As
     public class AssociatedViewHolder extends RecyclerView.ViewHolder {
 
         TextView name;
+        TextView type;
         //ImageView photo;
 
         public AssociatedViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name = (TextView) itemView.findViewById(R.id.tv_name_associated);
+            type = (TextView) itemView.findViewById(R.id.tv_type_associated);
             //set photo
         }
     }
@@ -44,6 +46,7 @@ public class AssociatedAdapter extends RecyclerView.Adapter<AssociatedAdapter.As
     public void onBindViewHolder(@NonNull AssociatedViewHolder holder, int position) {
         Associados a = associados.get(position);
         holder.name.setText(a.getName());
+        holder.type.setText(a.getType());
     }
 
     @Override

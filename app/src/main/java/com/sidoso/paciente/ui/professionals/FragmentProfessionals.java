@@ -1,5 +1,6 @@
 package com.sidoso.paciente.ui.professionals;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,16 +29,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.sidoso.paciente.ConversationActivity;
 import com.sidoso.paciente.R;
 import com.sidoso.paciente.adapter.ChatAdapter;
 import com.sidoso.paciente.http.VolleySingleton;
 import com.sidoso.paciente.model.Profissao;
 import com.sidoso.paciente.model.Profissional;
 import com.sidoso.paciente.utils.RecyclerItemClickListener;
-
-import io.socket.client.IO;
-import io.socket.client.Socket;
-import io.socket.emitter.Emitter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,8 +59,6 @@ public class FragmentProfessionals extends Fragment {
 
     private static List<Profissional> profissionais = new ArrayList<>();
     private static boolean requestStarted = false;
-
-    private Socket mSocket;
 
     @Nullable
     @Override
@@ -94,18 +90,24 @@ public class FragmentProfessionals extends Fragment {
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+                        Intent intent = new Intent(getActivity(), ConversationActivity.class);
+                        Profissional p = profissionais.get(position);
+                        intent.putExtra("profId", p.getId());
+                        intent.putExtra("profName", p.getName());
+                        intent.putExtra("profBirth", p.getBirth());
+                        intent.putExtra("profCpf", p.getCpf());
+                        intent.putExtra("profPhoneMain", p.getPhoneMain());
+                        intent.putExtra("profEmail", p.getEmail());
 
+                        intent.putExtra("pacienteId", mUserSaved.getInt("userId", 0));
+                        intent.putExtra("pacienteEmail", mUserSaved.getString("userEmail", ""));
+
+                        startActivity(intent);
                     }
-
                     @Override
-                    public void onLongItemClick(View view, int position) {
-
-                    }
-
+                    public void onLongItemClick(View view, int position) {}
                     @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                    }
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {}
                 }
         ));
 
@@ -144,7 +146,6 @@ public class FragmentProfessionals extends Fragment {
                     }
                 }
                 chatAdapter.notifyDataSetChanged();
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -153,13 +154,11 @@ public class FragmentProfessionals extends Fragment {
                 isLoading(false);
 
                 if(networkResponse == null){
-                    Log.e("ErrorResponseMessage", error.getClass().toString());
+                    Log.e("ErrorHttpResponse", error.getClass().toString());
                 }else {
                     String result = new String(networkResponse.data);
                     try {
                         JSONObject response = new JSONObject(result);
-
-                        Log.e("ErrorMessageProf", response.toString());
                         Toast.makeText(getContext(), response.getString("error"), Toast.LENGTH_SHORT).show();
 
                         if(networkResponse.statusCode == 403){
@@ -167,7 +166,6 @@ public class FragmentProfessionals extends Fragment {
                             Log.e("RefreshTokenAPI", "Token expired ".concat(response.getString("message")));
                             refreshTokenApi(API_URL.concat("login/paciente/"));
                         }
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -192,7 +190,6 @@ public class FragmentProfessionals extends Fragment {
     }
 
     private void refreshTokenApi(String url){
-
         Log.i("RefreshingTokenApi", "Update Token API");
         isLoading(true);
 
@@ -236,10 +233,7 @@ public class FragmentProfessionals extends Fragment {
                     String result = new String(networkResponse.data);
                     try {
                         JSONObject response = new JSONObject(result);
-
-                        Log.e("LoginErrorMessage", response.toString());
                         Toast.makeText(getContext(), response.getString("error"), Toast.LENGTH_SHORT).show();
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -276,24 +270,5 @@ public class FragmentProfessionals extends Fragment {
         }else{
             progressBar.setVisibility(View.GONE);
         }
-    }
-
-    private connectSocket(){
-        try {
-            
-            mSocket = IO.socket(API_URL); 
-            Log.d("success", mSocket.id());
-
-        } catch (e: Exception) {
-            e.printStackTrace();
-            Log.d("fail", "Failed to connect");
-        }
-
-        mSocket.connect();
-        //Register all the listener and callbacks here.
-        mSocket.on(Socket.EVENT_CONNECT, onConnect);
-        //mSocket.on("newUserToChatRoom", onNewUser);
-        //mSocket.on("updateChat", onUpdateChat);
-        //mSocket.on("userLeftChatRoom", onUserLeft);
     }
 }

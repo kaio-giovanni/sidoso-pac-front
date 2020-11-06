@@ -19,9 +19,6 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <!--
-             The API key for Google Maps-based APIs.
-        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/maps_api_key" />
@@ -35,10 +32,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".AssociatedActivity"></activity>
+        <activity 
+            android:name=".MainActivity"></activity>
+        <activity 
+            android:name=".LoginActivity"></activity>
+        <activity 
+            android:name=".RegisterActivity"></activity>
+        <activity 
+            android:name=".AssociatedActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sidoso.paciente.MainActivity" />
+        </activity>
+        <activity 
+            android:name=".ConversationActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sidoso.paciente.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
