@@ -15,19 +15,25 @@
     <string name="maps_api_key">AIzaSyAb2eq_Q6DXxcN26EBOAXnLJkrrTclnq24</string>
     <string name="register">Cadastrar</string>
     <string name="link_register"> <u> Não tem uma conta? Crie uma </u></string>
+    <string name="patient">Paciente</string>
+    <string name="obs">Observações, sintomas. etc...\n</string>
     <string name="professionals"> Profissionais</string>
+    <string name="professional"> Profissional</string>
     <string name="company">Empresa</string>
     <string name="associateds">Associados</string>
     <string name="about">Sobre</string>
     <string name="entertainment">Entretenimento</string>
     <string name="pharmacies">Fármacias</string>
     <string name="consultation">Consultas</string>
+    <string name="empty_consultation">Não há nenhuma consulta marcada por aqui.</string>
     <string name="others">Outros</string>
     <string name="user_email">paciente@sidoso.com</string>
     <string name="user_name">Kaio giovanni</string>
     <string name="cancel">Cancelar</string>
     <string name="settings">Configurações</string>
     <string name="logout">Sair</string>
+    <string name="ok">Ok</string>
+    <string name="you">Você</string>
     <string name="message">Mensagem</string>
 
     <string name="desc_about">
@@ -47,7 +53,7 @@
 
     <string-array name="list_settings_fragment">
         <item> Apagar todas as mensagens </item>
-        <item> Desativar conta </item>
+        <!-- <item> Desativar conta </item> -->
         <item> Sair </item>
     </string-array>
 

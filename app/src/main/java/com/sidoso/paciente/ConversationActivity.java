@@ -19,6 +19,7 @@ import com.sidoso.paciente.interfaces.IMessage;
 import com.sidoso.paciente.listener.MessageListener;
 import com.sidoso.paciente.model.Message;
 import com.sidoso.paciente.model.Paciente;
+import com.sidoso.paciente.model.Profissao;
 import com.sidoso.paciente.model.Profissional;
 import com.sidoso.paciente.websocket.WebSocket;
 
@@ -53,6 +54,8 @@ public class ConversationActivity extends AppCompatActivity  implements IMessage
         profissional.setBirth(intent.getStringExtra("profBirth"));
         profissional.setPhoneMain(intent.getStringExtra("profPhoneMain"));
         profissional.setCpf(intent.getStringExtra("profCpf"));
+        profissional.setProfissao(new Profissao(intent.getIntExtra("profissaoId", 0),
+                intent.getStringExtra("profissaoName")));
 
         user = new Paciente();
         user.setId(intent.getIntExtra("pacienteId", 0));
@@ -60,6 +63,7 @@ public class ConversationActivity extends AppCompatActivity  implements IMessage
 
         toolbar = (Toolbar) findViewById(R.id.tollbarConversation);
         toolbar.setTitle(profissional.getName());
+        toolbar.setSubtitle(profissional.getProfissao().getName());
         toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
 
@@ -86,12 +90,14 @@ public class ConversationActivity extends AppCompatActivity  implements IMessage
             @Override
             public void onClick(View view) {
                 String msg = etMsg.getText().toString();
+                Calendar currentDate = Calendar.getInstance();
                 if(!(msg == "" || msg == null)){
                     Message txtMsg = new Message(user.getId(),
                             profissional.getId(),
                             profissional.getEmail(),
                             msg,
-                            Calendar.getInstance().getTime().getTime()+"");
+                            currentDate.get(Calendar.HOUR_OF_DAY) + ":" +
+                            currentDate.get(Calendar.MINUTE));
 
                     WebSocket.sendMessage(txtMsg);
                     saveMessage(txtMsg);

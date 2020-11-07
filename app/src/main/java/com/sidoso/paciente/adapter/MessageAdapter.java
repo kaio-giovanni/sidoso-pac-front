@@ -16,29 +16,24 @@ import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
     private List<Message> messages;
-    private Integer idP;
-    private String emailP;
+    private Paciente p;
 
     public MessageAdapter(List<Message> messages, Paciente p){
         this.messages = messages;
-
-        idP = p.getId();
-        emailP = p.getEmail();
+        this.p = p;
     }
 
     public class MessageViewHolder extends RecyclerView.ViewHolder {
-
         TextView author;
         TextView message;
         TextView messageDate;
 
-
         public MessageViewHolder(@NonNull View itemView){
             super(itemView);
 
-            author = (TextView) itemView.findViewById(R.id.tv_author_message);
-            message = (TextView) itemView.findViewById(R.id.tv_message);
-            messageDate = (TextView) itemView.findViewById(R.id.tv_message_date);
+            author = itemView.findViewById(R.id.tv_author_message);
+            message = itemView.findViewById(R.id.tv_message);
+            messageDate = itemView.findViewById(R.id.tv_message_date);
         }
     }
 
@@ -68,9 +63,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
         Message message = messages.get(position);
 
-        if(isUserLocal(message)){
-            holder.author.setText("Você");
-        }
         holder.message.setText(message.getMessage());
         holder.messageDate.setText(message.getSenderAt());
     }
@@ -81,7 +73,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     }
 
     private boolean isUserLocal(Message m){
-        if(m.getSenderId() == this.idP && m.getReceptorEmail() != this.emailP){
+        if(m.getSenderId() == this.p.getId() && m.getReceptorEmail() != this.p.getEmail()){
             return true;
         }
         return false;

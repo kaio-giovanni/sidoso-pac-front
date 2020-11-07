@@ -57,7 +57,7 @@ public class FragmentProfessionals extends Fragment {
     private ChatAdapter chatAdapter;
     private SharedPreferences mUserSaved;
 
-    private static List<Profissional> profissionais = new ArrayList<>();
+    private static List<Profissional> profissionais = new ArrayList<Profissional>();
     private static boolean requestStarted = false;
 
     @Nullable
@@ -98,6 +98,8 @@ public class FragmentProfessionals extends Fragment {
                         intent.putExtra("profCpf", p.getCpf());
                         intent.putExtra("profPhoneMain", p.getPhoneMain());
                         intent.putExtra("profEmail", p.getEmail());
+                        intent.putExtra("profissaoId", p.getProfissao().getId());
+                        intent.putExtra("profissaoName", p.getProfissao().getName());
 
                         intent.putExtra("pacienteId", mUserSaved.getInt("userId", 0));
                         intent.putExtra("pacienteEmail", mUserSaved.getString("userEmail", ""));

@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- <item name="imageButtonStyle">@style/MyImageButton</item> -->
     </style>
 
     <!-- Full Screen-->
@@ -36,4 +37,9 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <!--
+    <style name="MyImageButton" parent="Widget.AppCompat.ImageButton">
+         <item name="android:background">@drawable/img_button_bg</item>
+    </style>
+    -->
 </resources>

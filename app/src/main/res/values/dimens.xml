@@ -12,6 +12,7 @@
     <dimen name="text_logo_splash">18sp</dimen>
     <dimen name="height_progressbar">10dp</dimen>
     <dimen name="margin_message_box"> 5dp</dimen>
+    <dimen name="card_consulta">210dp</dimen>
     <dimen name="img_view_associateds">200dp</dimen>
 
     <dimen name="activity_horizontal_margin">16dp</dimen>

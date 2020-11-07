@@ -16,6 +16,7 @@ import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
     private List<Profissional> profissionais;
+
     public ChatAdapter(List<Profissional> profissionais){
         this.profissionais = profissionais;
     }
@@ -29,9 +30,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         public ChatViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            photo = (ImageView) itemView.findViewById(R.id.professional_img);
-            name = (TextView) itemView.findViewById(R.id.professional_name);
-            prof_job = (TextView) itemView.findViewById(R.id.professional_job);
+            photo = itemView.findViewById(R.id.professional_img);
+            name = itemView.findViewById(R.id.professional_name);
+            prof_job = itemView.findViewById(R.id.professional_job);
         }
     }
 

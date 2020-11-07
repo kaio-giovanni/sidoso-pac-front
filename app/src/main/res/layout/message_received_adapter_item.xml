@@ -7,23 +7,28 @@
     android:background="@color/startColor"
     android:layout_marginTop="@dimen/margin_message_box"
     android:layout_marginBottom="@dimen/margin_message_box"
+    android:padding="@dimen/margin_message_box"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_author_message"
         android:textColor="@color/whiteSmoke"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tv_message"
         android:textColor="@color/whiteSmoke"
+        android:layout_margin="2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tv_message_date"
         android:textColor="@color/whiteSmoke"
+        android:textStyle="italic"
+        android:gravity="right"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

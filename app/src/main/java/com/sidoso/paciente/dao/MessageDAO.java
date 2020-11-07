@@ -61,13 +61,11 @@ public class MessageDAO extends DataBase {
         return messages;
     }
 
-    /*
-    public void deleteMessages(Integer receptorId) throws  Exception {
-        String sql = "DELETE FROM " + MessageReadContract.MessageEntry.TABLE_NAME + " WHERE " +
-                MessageReadContract.MessageEntry.COLUMN_SENDER_ID + " = ?" +
-                " OR " + MessageReadContract.MessageEntry.COLUMN_RECEPTOR_ID + " = ?";
-        String[] selectionArgs = new String[]{"" + receptorId, "" + receptorId};
-        getDataBase().rawQuery(sql, selectionArgs);
+    public void deleteAllMessages(Integer receptorId) throws  Exception {
+        getDataBase().delete(MessageReadContract.MessageEntry.TABLE_NAME,
+                MessageReadContract.MessageEntry.COLUMN_SENDER_ID + " = ? " +
+                        " OR " +
+                        MessageReadContract.MessageEntry.COLUMN_RECEPTOR_ID + " = ? "
+                , new String[]{receptorId+"", receptorId+""});
     }
-    */
 }

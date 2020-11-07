@@ -52,7 +52,7 @@ public class FragmentAssociateds extends Fragment {
     private AssociatedAdapter associatedAdapter;
     private SharedPreferences mUserSaved;
 
-    private static List<Associados> associados = new ArrayList<>();
+    private static List<Associados> associados = new ArrayList<Associados>();
     private static boolean requestStarted = false;
 
     @Nullable

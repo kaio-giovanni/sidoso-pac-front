@@ -29,8 +29,8 @@ public class AssociatedAdapter extends RecyclerView.Adapter<AssociatedAdapter.As
         public AssociatedViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = (TextView) itemView.findViewById(R.id.tv_name_associated);
-            type = (TextView) itemView.findViewById(R.id.tv_type_associated);
+            name = itemView.findViewById(R.id.tv_name_associated);
+            type = itemView.findViewById(R.id.tv_type_associated);
             //set photo
         }
     }
