@@ -16,7 +16,8 @@
     <string name="register">Cadastrar</string>
     <string name="link_register"> <u> Não tem uma conta? Crie uma </u></string>
     <string name="patient">Paciente</string>
-    <string name="obs">Observações, sintomas. etc...\n</string>
+    <string name="patient_info">Informações do paciente</string>
+    <string name="obs">Observações</string>
     <string name="professionals"> Profissionais</string>
     <string name="professional"> Profissional</string>
     <string name="company">Empresa</string>

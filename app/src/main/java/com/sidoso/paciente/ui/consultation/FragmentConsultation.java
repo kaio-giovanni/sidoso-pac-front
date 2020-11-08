@@ -128,6 +128,10 @@ public class FragmentConsultation extends Fragment {
 
                         paciente.setId(pacienteJson.getInt("id"));
                         paciente.setName(pacienteJson.getString("name"));
+                        paciente.setDt_birth(pacienteJson.getString("birth"));
+                        paciente.setGenre(pacienteJson.getString("genre"));
+                        paciente.setPhone1(pacienteJson.getString("phone_main"));
+                        paciente.setEmail(pacienteJson.getString("email"));
 
                         consulta.setId(object.getInt("id"));
                         consulta.setTitle(object.getString("title"));

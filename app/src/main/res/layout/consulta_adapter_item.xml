@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/card_consulta"
+    android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
-    android:background="@color/whiteSmoke">
+    android:background="@color/colorWhite">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,26 +54,58 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_consulta_prof"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:fontFamily="serif"
-            android:text="@string/professional"
-            android:layout_margin="5dp" />
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:text="@string/patient_info" />
 
         <TextView
             android:id="@+id/tv_consulta_pac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/corner"
             android:fontFamily="serif"
             android:text="@string/patient"
+            android:padding="5dp"
             android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:text="@string/professional" />
+
+        <TextView
+            android:id="@+id/tv_consulta_prof"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner"
+            android:fontFamily="serif"
+            android:text="@string/professional"
+            android:padding="5dp"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:text="@string/obs" />
 
         <TextView
             android:id="@+id/tv_consulta_obs"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_marginTop="15dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/corner"
             android:textStyle="italic"
             android:text="@string/obs"
             android:textColor="@color/colorGray" />

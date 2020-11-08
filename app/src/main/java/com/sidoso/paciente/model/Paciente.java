@@ -1,6 +1,12 @@
 package com.sidoso.paciente.model;
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Paciente {
 
     private int id;
@@ -62,7 +68,11 @@ public class Paciente {
     }
 
     public String getGenre(){
-        return this.genre;
+        if(this.genre == "F"){
+            return "Feminino";
+        } else {
+            return "Masculino";
+        }
     }
 
     public void setGenre(String genre){
@@ -117,17 +127,29 @@ public class Paciente {
         this.phone2 = phone2;
     }
 
+    public int getIdade(){
+        DateFormat df = new SimpleDateFormat("YYYY-mm-dd");
+
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        df.setLenient(false);
+
+        try {
+            int userYear = df.parse(this.dt_birth).getYear();
+            System.out.println("currentYear: " + currentYear + " userYear: " + userYear);
+            return userYear - currentYear;
+        }catch(ParseException e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
     @Override
     public String toString(){
-        String str = "Foto: "+ this.photoUrl + " \n";
-        str += "Nome: " + this.name + "\n ";
+        String str = "Nome: "+ this.name + " \n";
+        str += "Sexo: " + getGenre() + "\n";
         str += "Data de nascimento: " + this.dt_birth + " \n";
-        str += "CPF: " + this.cpf + " \n";
-        str += "Genero: " + this.genre + " \n";
         str += "Telefone I: " + this.phone1 + " \n";
-        str += "Telefone II: " + this.phone2 + " \n";
-        str += "Email: " + this.email + " \n";
-        str += "Senha: " + this.password + " \n";
+        str += "Email: " + this.email;
         return str;
     }
 

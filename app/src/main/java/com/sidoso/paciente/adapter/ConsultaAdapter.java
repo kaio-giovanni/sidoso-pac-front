@@ -55,9 +55,9 @@ public class ConsultaAdapter extends RecyclerView.Adapter<ConsultaAdapter.Consul
         holder.date.setText("Data e hora: " + consulta.getDate());
         holder.status.setText(consulta.getStatus());
         holder.status.setBackgroundResource(changeStatusColor(consulta.getStatus()));
-        holder.profissional.setText(consulta.getProfissional().getName() + " - " + consulta.getProfissional().getProfissao().getName());
-        holder.paciente.setText(consulta.getPaciente().getName());
-        holder.obs.setText("Obs.: \n" + consulta.getObs());
+        holder.profissional.setText(consulta.getProfissional().toString());
+        holder.paciente.setText(consulta.getPaciente().toString());
+        holder.obs.setText(consulta.getObs());
     }
 
     @Override

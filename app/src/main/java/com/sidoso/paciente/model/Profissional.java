@@ -118,4 +118,8 @@ public class Profissional {
     public void addEspecialidade(Especialidade especialidade) {
         this.especialidades.add(especialidade);
     }
+
+    public String toString(){
+        return "Nome: " + this.name + "\nProfissão: " + this.profissao.getName();
+    }
 }
