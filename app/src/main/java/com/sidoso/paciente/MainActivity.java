@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             p.setName(nome);
             p.setEmail(email);
 
-            webSocket = new WebSocket(p);
+            webSocket = new WebSocket(p, getApplicationContext());
         }else{
             finish();
         }

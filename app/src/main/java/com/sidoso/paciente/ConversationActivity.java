@@ -101,7 +101,11 @@ public class ConversationActivity extends AppCompatActivity  implements IMessage
 
                     WebSocket.sendMessage(txtMsg);
                     saveMessage(txtMsg);
-
+                    try{
+                        messageDAO.insert(txtMsg);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                     etMsg.setText("");
 
                     scrollingRecyclerView();
@@ -119,17 +123,6 @@ public class ConversationActivity extends AppCompatActivity  implements IMessage
     public void notify(MessageListener listener) {
         Message message = listener.getMessage();
         saveMessage(message);
-        scrollingRecyclerView();
-    }
-
-    private void refreshMessageAdapter(){
-        // execute in main thread (UI)
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                messageAdapter.notifyDataSetChanged();
-            }
-        });
     }
 
     private List<Message> getMessagesByReceptorId(int receptorId){
@@ -143,11 +136,12 @@ public class ConversationActivity extends AppCompatActivity  implements IMessage
 
     private void saveMessage(Message msg){
         messages.add(msg);
-        refreshMessageAdapter();
-        try {
-            messageDAO.insert(msg);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                messageAdapter.notifyDataSetChanged();
+                scrollingRecyclerView();
+            }
+        });
     }
 }

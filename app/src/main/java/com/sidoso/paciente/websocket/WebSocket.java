@@ -1,7 +1,9 @@
 package com.sidoso.paciente.websocket;
 
+import android.content.Context;
 import android.util.Log;
 
+import com.sidoso.paciente.dao.MessageDAO;
 import com.sidoso.paciente.listener.MessageListener;
 import com.sidoso.paciente.model.Message;
 import com.sidoso.paciente.model.Paciente;
@@ -25,9 +27,11 @@ public class WebSocket {
     private static Socket socket;
     private static MessageListener messageListener;
     private Paciente paciente;
+    private MessageDAO messageDAO;
 
-    public WebSocket(Paciente paciente){
+    public WebSocket(Paciente paciente, Context ctx){
         this.paciente = paciente;
+        this.messageDAO  = new MessageDAO(ctx);
 
         if(messageListener == null){
             messageListener = new MessageListener();
@@ -79,7 +83,10 @@ public class WebSocket {
                             object.getString("sender_at"));
 
                     messageListener.setMessage(message);
+                    messageDAO.insert(message);
                 } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (Exception e){
                     e.printStackTrace();
                 }
             }

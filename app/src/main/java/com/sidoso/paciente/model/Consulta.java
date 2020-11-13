@@ -1,11 +1,5 @@
 package com.sidoso.paciente.model;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
-
 public class Consulta {
     private int id;
     private String title;
@@ -16,8 +10,6 @@ public class Consulta {
     private String status;
     private Double lat;
     private Double lng;
-
-    private DateFormat df;
 
     public Consulta(){}
 
@@ -42,7 +34,7 @@ public class Consulta {
     }
 
     public void setDate(String date) {
-        this.date = stringToDate(date, "dd-MM-YYYY HH:mm:ss");
+        this.date = date;
     }
 
     public Profissional getProfissional() {
@@ -104,17 +96,4 @@ public class Consulta {
         this.lng = lng;
     }
 
-    private String stringToDate(String aDate, String aFormat){
-        if (aDate == null) return null;
-        df = new SimpleDateFormat(aFormat);
-        df.setLenient(false);
-
-        try {
-            Date date = df.parse(aDate);
-            return df.format(date);
-        }catch(ParseException e){
-            e.printStackTrace();
-            return null;
-        }
-    }
 }

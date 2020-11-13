@@ -46,6 +46,7 @@ import java.util.Map;
 import static android.content.Context.MODE_PRIVATE;
 import static com.sidoso.paciente.config.Constants.API_URL;
 import static com.sidoso.paciente.config.Constants.FILE_PREFERENCES;
+import static com.sidoso.paciente.utils.Helper.stringToDate;
 
 public class FragmentConsultation extends Fragment {
     private ProgressBar progressBar;
@@ -135,7 +136,7 @@ public class FragmentConsultation extends Fragment {
 
                         consulta.setId(object.getInt("id"));
                         consulta.setTitle(object.getString("title"));
-                        consulta.setDate(object.getString("date"));
+                        consulta.setDate(stringToDate(object.getString("date"), "yyyy-MM-dd'T'HH:mm"));
                         consulta.setStatus(object.getString("status"));
                         consulta.setProfissional(profissional);
                         consulta.setPaciente(paciente);
