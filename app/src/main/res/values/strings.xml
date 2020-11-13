@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HealthAged</string>
+    <string name="app_name">Delivery Health</string>
     <string name="name_desc">HealthAged Paciente</string>
     <string name="enter_email">Digite seu email</string>
     <string name="enter_password">Digite sua senha</string>

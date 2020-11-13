@@ -37,9 +37,9 @@
             <TextView
                 android:id="@+id/tv_consulta_date"
                 android:layout_width="0dp"
-                android:textStyle="italic"
                 android:textSize="14sp"
-                android:text="12-12-2020"
+                android:text=""
+                android:fontFamily="serif"
                 android:layout_height="wrap_content"
                 android:layout_weight="3" />
 
