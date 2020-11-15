@@ -38,10 +38,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.sidoso.paciente.config.Constants.API_URL;
@@ -108,10 +112,10 @@ public class FragmentConsultation extends Fragment {
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                Consulta consulta = new Consulta();
-                Profissional profissional = new Profissional();
+                Consulta consulta;
+                Profissional profissional;
                 Profissao profissao;
-                Paciente paciente = new Paciente();
+                Paciente paciente;
                 isLoading(false);
 
                 for (int i = 0; i < response.length(); i++) {
@@ -120,6 +124,10 @@ public class FragmentConsultation extends Fragment {
                         JSONObject profissionalJson = object.getJSONObject("profissional");
                         JSONObject profissaoJson = profissionalJson.getJSONObject("profissao");
                         JSONObject pacienteJson = object.getJSONObject("paciente");
+
+                        consulta = new Consulta();
+                        profissional = new Profissional();
+                        paciente = new Paciente();
 
                         profissao = new Profissao(profissaoJson.getInt("id"), profissaoJson.getString("name"));
 
@@ -136,7 +144,7 @@ public class FragmentConsultation extends Fragment {
 
                         consulta.setId(object.getInt("id"));
                         consulta.setTitle(object.getString("title"));
-                        consulta.setDate(stringToDate(object.getString("date"), "yyyy-MM-dd'T'HH:mm"));
+                        consulta.setDate(stringToDate(object.getString("date"), "yyyy-MM-dd'T'HH:mm").replace("T", " "));
                         consulta.setStatus(object.getString("status"));
                         consulta.setProfissional(profissional);
                         consulta.setPaciente(paciente);

@@ -159,17 +159,8 @@ public class FragmentProfessionals extends Fragment {
                     Log.e("ErrorHttpResponse", error.getClass().toString());
                 }else {
                     String result = new String(networkResponse.data);
-                    try {
-                        JSONObject response = new JSONObject(result);
-                        Toast.makeText(getContext(), response.getString("error"), Toast.LENGTH_SHORT).show();
-
-                        if(networkResponse.statusCode == 403){
-                            //refresh token
-                            Log.e("RefreshTokenAPI", "Token expired ".concat(response.getString("message")));
-                            refreshTokenApi(API_URL.concat("login/paciente/"));
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    if(networkResponse.statusCode == 403){
+                        refreshTokenApi(API_URL.concat("login/paciente/"));
                     }
                 }
             }
@@ -192,7 +183,7 @@ public class FragmentProfessionals extends Fragment {
     }
 
     private void refreshTokenApi(String url){
-        Log.i("RefreshingTokenApi", "Update Token API");
+        Toast.makeText(getContext(), "Refreshing token auth", Toast.LENGTH_SHORT).show();
         isLoading(true);
 
         String email = mUserSaved.getString("userEmail", "");
