@@ -92,4 +92,13 @@ public class Associados {
     public void setLng(double lng) {
         this.lng = lng;
     }
+
+    @Override
+    public String toString() {
+        return "Nome: " + name + "\n" +
+                "Tipo: " + type + "\n" +
+                "Telefone I: " + phone_main + "\n" +
+                "Telefone II: " + phone_secondary + "\n" +
+                "Email: " + email + "\n";
+    }
 }
